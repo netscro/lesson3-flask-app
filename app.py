@@ -24,7 +24,6 @@ def decrypt():
     :return: decrypting string
     """
     string = request.args.get('string', '')
-    print(string.encode())
     param = f.decrypt(string.encode()).decode()
     return render_template('index.html', string=param)
 
