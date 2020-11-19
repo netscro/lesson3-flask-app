@@ -8,11 +8,17 @@ f = Fernet(key)
 
 @app.route('/encrypt')
 def encrypt():
-    string = request.args.get('string', '')
-    token = f.encrypt(string.encode())
-    original_token = token.decode()
-    d = f.decrypt(token).decode()
-    return render_template('index.html', original_token=original_token, string=d)
+    param = request.args.get('param', '')
+    string = f.encrypt(param.encode())
+    return render_template('index.html', string=string)
+
+
+@app.route('/decrypt')
+def decrypt():
+    param = request.args.get('param', '')
+    print(param.encode())
+    string = f.decrypt(param.encode())
+    return render_template('index.html', string=string)
 
 
 app.run(debug=True)
