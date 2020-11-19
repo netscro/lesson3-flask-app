@@ -14,7 +14,7 @@ def encrypt():
     """
     string = request.args.get('string', '')
     param = f.encrypt(string.encode()).decode()
-    return render_template('index.html', string=param)
+    return render_template('index.html', string=param, res='Encrypt')
 
 
 @app.route('/decrypt')
@@ -25,7 +25,7 @@ def decrypt():
     """
     string = request.args.get('string', '')
     param = f.decrypt(string.encode()).decode()
-    return render_template('index.html', string=param)
+    return render_template('index.html', string=param, res='Decrypt')
 
 
 app.run(debug=True)
